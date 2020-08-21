@@ -65,5 +65,14 @@
     /* Advanced Options */
     "skipLibCheck": true,                     /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
-  }
+  },
+  "exclude": [ /* archivos a excluir */
+    "functions.ts",
+    "*.dev.ts", //para excluir todos los archivos con esta extension
+    "**/*.cert.ts" //para excluir todos los archivos con esta extension en carpetas principales o subcarpetas
+  ],
+  "include": [ // incluir dentro de la compilacion, solo compilara los archivos que se indiquen aca.
+    "index.ts" 
+  ],
+  "files": [ "index.ts"] // lo mismo que include, pero no se pueden poner patrones, tienes que agregar archivo por archivo
 }
