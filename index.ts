@@ -9,3 +9,5 @@ value1 = 1;
 value2 = 2;
 
 console.log(plus(value1, value2));
+
+const age: number = 24;
