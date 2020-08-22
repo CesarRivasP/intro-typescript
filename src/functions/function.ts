@@ -51,11 +51,11 @@ function printV2(): void {
 
 console.log(plusV3(2, 2));
 
-let plusV4: Function;
-plusV4 = 'sadadsad'; //tiene que ser una funcion para que no sea un error
+// let plusV4: Function;
+// plusV4 = 'sadadsad'; //tiene que ser una funcion para que no sea un error
 
 let plusV5: (a: number, b: number) => number; //otra forma validar el tipo de una funcion
 // plusV5 = printV2; // no es valido, porque print es de type void
 
-console.log(plusV4(2, 2));
+// console.log(plusV4(2, 2));
 
