@@ -6,28 +6,48 @@
     // "incremental": true,                   /* Enable incremental compilation */
     "target": "es5",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
     "module": "commonjs",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
-    // "lib": [],                             /* Specify library files to be included in the compilation. */
+    // "lib": [],                             /* Specify library files to be included in the compilation. */ 
+    /*automaticamente incluye todas las librerias necesarias para comenzar un proyecto. */
+    /* Si se descomenta, habria que ingresar manualmente cada una de las librerias que se necesitan */
+    /* "lib": ["DOM", "ES6"] */
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
+    // Nos permite o no que los archivos JS se puedan incluir en la compilacion
     // "checkJs": true,                       /* Report errors in .js files. */
+    // No lo va a modificar, pero a verificar que la sintaxis no tenga errores
     // "jsx": "preserve",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
+    // Para apps escritas en REACT, mantiene la sintaxis en jsx
     // "declaration": true,                   /* Generates corresponding '.d.ts' file. */
     // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
+    // Para cuando se esta liberando la libreria para que sea usada por otros desarrolladores, en donde se necesita
+    // un archivo manifest en donde indica todos los tipos definidos en el proyecto . Estos dos no se utilizan mucho, a menos que sea una libreria
     // "sourceMap": true,                     /* Generates corresponding '.map' file. */
+    // Nos permite depurar el codigo typescript en nuestro proyecto en VSC. Produce un archivo intermedio entre el archiv JS que es el
+    // compilado, y el archivo TS que es el original. Contiene informacion de donde proviene el archivo JS
     // "outFile": "./",                       /* Concatenate and emit output to single file. */
-    // "outDir": "./",                        /* Redirect output structure to the directory. */
-    // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+    "outDir": "./dist",                        /* Redirect output structure to the directory. */
+    // nos indica donde nosotrtos queremos que nuestros archivos sean guardados
+    "rootDir": "./src",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
     // "composite": true,                     /* Enable project compilation */
     // "tsBuildInfoFile": "./",               /* Specify file to store incremental compilation information */
-    // "removeComments": true,                /* Do not emit comments to output. */
-    // "noEmit": true,                        /* Do not emit outputs. */
+    "removeComments": true,                /* Do not emit comments to output. */
+    // nos permite elminar todos los comentarios que tengamos en nuestro proyecto
+    // "noEmit": true, 
+    // "noEmitOnError": true,                       /* Do not emit outputs. */
+    // evitamos que si se tiene un error, se genere el archivo compilado JS
     // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
     // "downlevelIteration": true,            /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
     // "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
 
     /* Strict Type-Checking Options */
+    /*
+    Esta seccion nos permite verificar todas las secciones de tipado que tengamos en nuestro proyecto.
+    Si la primera key esta en true, todos los demas elementos quedan en true por defecto
+    */
     "strict": true,                           /* Enable all strict type-checking options. */
     // "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
+    // esta propiedad permite que al no indicar un type, no agarre por defecto que es type any, y a su vez, no deja compilar
     // "strictNullChecks": true,              /* Enable strict null checks. */
+    // esta propiedad te indica si un elemento puede ser null
     // "strictFunctionTypes": true,           /* Enable strict checking of function types. */
     // "strictBindCallApply": true,           /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
     // "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */
@@ -36,8 +56,11 @@
 
     /* Additional Checks */
     // "noUnusedLocals": true,                /* Report errors on unused locals. */
+    // se asegura de que la variables declaradas sean utilizadas
     // "noUnusedParameters": true,            /* Report errors on unused parameters. */
+    // se asegura que sean utilizados los parametros pasados a las funciones
     // "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
+    // da error si una funcion que espera algun resultado no retorna el mismo
     // "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
 
     /* Module Resolution Options */
@@ -66,13 +89,13 @@
     "skipLibCheck": true,                     /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   },
-  "exclude": [ /* archivos a excluir */
+  /* archivos a excluir */
+  // "**/*.cert.ts" para excluir todos los archivos con esta extension en carpetas principales o subcarpetas
+ /*  "exclude": [ 
     "functions.ts",
     "*.dev.ts", //para excluir todos los archivos con esta extension
-    "**/*.cert.ts" //para excluir todos los archivos con esta extension en carpetas principales o subcarpetas
-  ],
-  "include": [ // incluir dentro de la compilacion, solo compilara los archivos que se indiquen aca.
-    "index.ts" 
-  ],
-  "files": [ "index.ts"] // lo mismo que include, pero no se pueden poner patrones, tienes que agregar archivo por archivo
+  ], */
+  // incluir dentro de la compilacion, solo compilara los archivos que se indiquen aca.
+  // "include": [ "index.ts" ],
+  // "files": [ "index.ts"] // lo mismo que include, pero no se pueden poner patrones, tienes que agregar archivo por archivo
 }
