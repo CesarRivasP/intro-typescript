@@ -3,7 +3,7 @@ class Vehicle {
   private model: string;
   private color: string; */
   // forma de setear los parametros a traves del constructor, agregado posteriormente
-  constructor(private readonly brandName: string, private model: string, private color: string){ //asignar y crear atributos en la clase
+  constructor(/*private*/ protected readonly brandName: string, private model: string, private color: string){ //asignar y crear atributos en la clase
     // readonly solo existe en TS, y nos indica que solo podemos utulizar los atributos en su inicializacion
     /* this.brandName = brandName;
     this.model = model;
@@ -28,10 +28,17 @@ class Car extends Vehicle {
   // Con la herencia se pueden sobreescribir acciones de la clase padre
   handleDrive = () => {
     // this.brandName = 'Porsche Singer';  // Si se puede alterar el valor de este atributo desde dentro de la clase
-    console.log(`Estoy conduciendo un auto`);
+    console.log(`Estoy conduciendo un auto ${this.brandName}`);
   }
 }
 
 const newCar = new Car('Porsche', '993', 'plateado');
 console.log(newCar);
 newCar.handleDrive();
+
+// -- Visibilidad de la herencia --
+/*
+ * Public: puede ser llamado desde cualquier lugar 
+ * Private: puede ser llamado desde la misma clase nada mas
+ * Proteted: puede ser llamado desde la misma clase y sus clases derivadas
+ */
