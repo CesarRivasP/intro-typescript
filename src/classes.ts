@@ -2,6 +2,7 @@ class Vehicle {
   /* private brandName: string;
   private model: string;
   private color: string; */
+  static testCurrentPrice: number = 1505050;
   // forma de setear los parametros a traves del constructor, agregado posteriormente
   constructor(
     /*private*/ protected readonly brandName: string, 
@@ -25,6 +26,29 @@ class Vehicle {
   handleDrive = () => {
     // this.brandName = 'Porsche Singer';  // Si se puede alterar el valor de este atributo desde dentro de la clase
     console.log(`Estoy conduciendo un ${this.brandName} ${this.model} de color ${this.color}`);
+  }
+
+  static PriceToCurrency(value: number, typeOfCurrency: string){ 
+    // Se va a poder acceder a esta funcion sin necesidad que instanciar esta clase con new
+    // Cuando se trabaja con propiedades o funciones estaticas, no se puede llamar a una funcion que no sea estica
+    // no se puede llamar a los atributos de la clase, si no es estatico, no puede acceder al atributo
+    console.log(this.testCurrentPrice); // asi es que se puede acceder, porque es estatico
+
+    let result: string = '';
+
+    switch(typeOfCurrency){
+      case 'USD':
+        result = `${typeOfCurrency} ${value}`;
+        break;
+      case 'PESOS':
+        result = `${typeOfCurrency} ${value}`;
+        break;
+      case 'EUROS':
+        result = `${typeOfCurrency} ${value}`;
+        break;
+    }
+
+    return result;
   }
 }
 
@@ -58,3 +82,14 @@ console.log(myCar.handleCurrentPrice);
  */
 
  // Los getters y setters nos permite cambiar y obtener atributos de una clase
+
+ // -- Propiedades estaticas --
+/*
+ * Nos permiten acceder a estas sin necesidad de utilizar el keyboard new, sin que hagamos una instancia de una clase
+ * Es util para valores estaticos que queremos que sean parte de una clase, pero que no varian con el tiempo
+ * Una de dichas clases estaticas que contiene varios metodos estaticos para hacer calculos es Math. 
+ * Con esta clase podemos acceder a varios metodos sin necesidad de instancear esta clase
+ */
+
+
+console.log(Vehicle.PriceToCurrency(95000, 'USD'));
