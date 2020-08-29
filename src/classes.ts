@@ -3,13 +3,15 @@ class Vehicle {
   private model: string;
   private color: string; */
   // forma de setear los parametros a traves del constructor, agregado posteriormente
-  constructor(private brandName: string, private model: string, private color: string){
+  constructor(private readonly brandName: string, private model: string, private color: string){ //asignar y crear atributos en la clase
+    // readonly solo existe en TS, y nos indica que solo podemos utulizar los atributos en su inicializacion
     /* this.brandName = brandName;
     this.model = model;
     this.color = color; */
   }
 
   handleDrive = () => {
+    // this.brandName = 'Porsche Singer';  // Si se puede alterar el valor de este atributo desde dentro de la clase
     console.log(`Estoy conduciendo un ${this.brandName} ${this.model} de color ${this.color}`);
   }
 }
