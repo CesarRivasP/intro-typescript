@@ -1,4 +1,8 @@
-class Vehicle {
+//class Vehicle {
+abstract class Vehicle {
+  // con abstract se le indica a la clase que no puede ser instanceada, pueden instancear a las clases hijas
+  // pero a esta no se le puede instancear de manera directa
+
   /* private brandName: string;
   private model: string;
   private color: string; */
@@ -23,12 +27,14 @@ class Vehicle {
     this.price = value;
   }
 
-  handleDrive = () => {
+  // Una vez se pasa a abstracto, no puede ser utilizado directamente, solo por clases hijas
+  abstract handleDrive(): void 
+  /* {
     // this.brandName = 'Porsche Singer';  // Si se puede alterar el valor de este atributo desde dentro de la clase
     console.log(`Estoy conduciendo un ${this.brandName} ${this.model} de color ${this.color}`);
-  }
+  } */
 
-  static PriceToCurrency(value: number, typeOfCurrency: string){ 
+  static PriceToCurrency(value: number, typeOfCurrency: string): string { 
     // Se va a poder acceder a esta funcion sin necesidad que instanciar esta clase con new
     // Cuando se trabaja con propiedades o funciones estaticas, no se puede llamar a una funcion que no sea estica
     // no se puede llamar a los atributos de la clase, si no es estatico, no puede acceder al atributo
@@ -52,27 +58,31 @@ class Vehicle {
   }
 }
 
-const myCar = new Vehicle('Porsche', '911', 'plateado', 95000);
+// esto no es posible luego de pasar la clase vehicle como clase abstracta -- ultimo agregado
+
+// const myCar = new Vehicle('Porsche', '911', 'plateado', 95000); 
 // myCar.brandName = 'Ruf'; 
 // Para evitar que los atributos del objeto puedan ser cambiados en sus intancias, hay que agregar
 // private a los atributos. Asi los atributos pasan a ser privados, y no se pueden cambiar desde fuera de la clase
-myCar.handleDrive();
-console.log(myCar);
+/* myCar.handleDrive();
+console.log(myCar); */
 
 // Herencia
 class Car extends Vehicle {
   // Con la herencia se pueden sobreescribir acciones de la clase padre
-  handleDrive = () => {
+  handleDrive = (): void => {
     // this.brandName = 'Porsche Singer';  // Si se puede alterar el valor de este atributo desde dentro de la clase
     console.log(`Estoy conduciendo un auto ${this.brandName}`);
   }
+  // Si se tienen metodos abstractos en la clase padre, siempre tienen que ser implementados en las clases hijas
 }
 
+// SOlo se puede instancear la clase hija de Vehicle luego de pasar a ser un clase abstracta
 const newCar = new Car('Porsche', '993', 'plateado', 150000);
 console.log(newCar);
 newCar.handleDrive();
-myCar.handleSetPrice = 77777;
-console.log(myCar.handleCurrentPrice);
+/* myCar.handleSetPrice = 77777; la clase paso a ser abstracta
+console.log(myCar.handleCurrentPrice); */
 
 // -- Visibilidad de la herencia --
 /*
@@ -91,5 +101,8 @@ console.log(myCar.handleCurrentPrice);
  * Con esta clase podemos acceder a varios metodos sin necesidad de instancear esta clase
  */
 
-
 console.log(Vehicle.PriceToCurrency(95000, 'USD'));
+
+// -- Definir clases abstractas --
+// Que no puedan ser creadas directamente, sino que sean creadas dentro de sus clases derivadas
+// Esto obliga a que los metodos sean utilizados solo por las clases hijas
