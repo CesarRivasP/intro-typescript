@@ -1,8 +1,4 @@
-//class Vehicle {
-abstract class Vehicle {
-  // con abstract se le indica a la clase que no puede ser instanceada, pueden instancear a las clases hijas
-  // pero a esta no se le puede instancear de manera directa
-
+class Vehicle {
   /* private brandName: string;
   private model: string;
   private color: string; */
@@ -28,11 +24,10 @@ abstract class Vehicle {
   }
 
   // Una vez se pasa a abstracto, no puede ser utilizado directamente, solo por clases hijas
-  abstract handleDrive(): void 
-  /* {
+  handleDrive = (): void => {
     // this.brandName = 'Porsche Singer';  // Si se puede alterar el valor de este atributo desde dentro de la clase
     console.log(`Estoy conduciendo un ${this.brandName} ${this.model} de color ${this.color}`);
-  } */
+  }
 
   static PriceToCurrency(value: number, typeOfCurrency: string): string { 
     // Se va a poder acceder a esta funcion sin necesidad que instanciar esta clase con new
@@ -58,14 +53,12 @@ abstract class Vehicle {
   }
 }
 
-// esto no es posible luego de pasar la clase vehicle como clase abstracta -- ultimo agregado
-
-// const myCar = new Vehicle('Porsche', '911', 'plateado', 95000); 
+const myCar = new Vehicle('Porsche', '911', 'plateado', 95000); 
 // myCar.brandName = 'Ruf'; 
 // Para evitar que los atributos del objeto puedan ser cambiados en sus intancias, hay que agregar
 // private a los atributos. Asi los atributos pasan a ser privados, y no se pueden cambiar desde fuera de la clase
-/* myCar.handleDrive();
-console.log(myCar); */
+myCar.handleDrive();
+console.log(myCar);
 
 // Herencia
 class Car extends Vehicle {
@@ -81,8 +74,8 @@ class Car extends Vehicle {
 const newCar = new Car('Porsche', '993', 'plateado', 150000);
 console.log(newCar);
 newCar.handleDrive();
-/* myCar.handleSetPrice = 77777; la clase paso a ser abstracta
-console.log(myCar.handleCurrentPrice); */
+myCar.handleSetPrice = 77777;
+console.log(myCar.handleCurrentPrice);
 
 // -- Visibilidad de la herencia --
 /*
@@ -102,7 +95,3 @@ console.log(myCar.handleCurrentPrice); */
  */
 
 console.log(Vehicle.PriceToCurrency(95000, 'USD'));
-
-// -- Definir clases abstractas --
-// Que no puedan ser creadas directamente, sino que sean creadas dentro de sus clases derivadas
-// Esto obliga a que los metodos sean utilizados solo por las clases hijas
