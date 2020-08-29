@@ -22,3 +22,16 @@ const myCar = new Vehicle('Porsche', '911', 'plateado');
 // private a los atributos. Asi los atributos pasan a ser privados, y no se pueden cambiar desde fuera de la clase
 myCar.handleDrive();
 console.log(myCar);
+
+// Herencia
+class Car extends Vehicle {
+  // Con la herencia se pueden sobreescribir acciones de la clase padre
+  handleDrive = () => {
+    // this.brandName = 'Porsche Singer';  // Si se puede alterar el valor de este atributo desde dentro de la clase
+    console.log(`Estoy conduciendo un auto`);
+  }
+}
+
+const newCar = new Car('Porsche', '993', 'plateado');
+console.log(newCar);
+newCar.handleDrive();
