@@ -29,3 +29,7 @@ class ArrayAny<T> {
 
 // Para usarlo
 const col = new ArrayAny<string>(['a', 'b', 'c']);
+// Si no se le pasa el type por parametro, el reconoce el tipo, y lo valida con base a si este esta entre los types definidos
+const colWithoutParam = new ArrayAny(['a', 'b', 'c']);
+// El logra determinar el type por inferencia
+// -- Lo mas recomendable es que siempre se envie el tipo que se va a utilizar en la clase
