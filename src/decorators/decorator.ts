@@ -26,10 +26,18 @@ class Castles implements ApiEndpoint {
     return this.castles;
   };
 
+  @test
   post(request: string){
     this.castles.push(request);
   };
 }
+
+// Decorador de prueba
+function test(target: any, key: string, descriptor: PropertyDescriptor){
+  console.log(target);  // Prototype del objeto
+  console.log(`Identificador ${key}`);  //Identificador del metodo, propiedad o acceso donde se esta aplicando el decorator
+  console.log(descriptor.value);  // Referencia a la logica de la funcion, que es lo que hace la clase
+};
 
 function registerEndpoint(target: any){
   const className = target.name.toLowerCase();  // Nombre de la clase
@@ -42,10 +50,17 @@ function registerEndpoint(target: any){
 /* registerEndpoint(Families);
 registerEndpoint(Castles);
  */
+/*
 console.log(httpServer);
 
 console.log(httpServer['/families'].get());
 console.log(httpServer['/castles'].get());
+ */
 
-
-
+// -- Detalles sobre los decoradores --
+/**
+ * Estos se ejecutan una sola vez cunado ejecutamos el proyecto
+ * Solo cuando se ejecuta el archivo que tiene una clase con un decorador, es que este decorador se ejecuta
+ * No se ejecuta cuando se crean instancias de la clase
+ * En javascript son simples funciones
+ */
